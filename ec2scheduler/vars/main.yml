@@ -1,0 +1,7 @@
+---
+ec2_access_key: "******"
+ec2_secret_key: "******"
+aws_region: "eu-west-1"
+sns_topic: "ansible-sns"
+cf_tmp_location: "../roles/scheduler/files/ec2-scheduler.template"
+stack_name: "ansible-cloudformation"

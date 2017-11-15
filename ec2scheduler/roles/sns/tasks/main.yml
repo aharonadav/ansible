@@ -1,0 +1,10 @@
+- name: SNS Topic
+  sns_topic:
+    aws_access_key: "{{ec2_access_key}}"
+    aws_secret_key: "{{ec2_secret_key}}"
+    name: "{{ sns_topic }}"
+    state: present
+    region: "{{aws_region}}"
+    subscriptions:
+      - endpoint: "aharon.nadav@automat-it.com"
+        protocol: "email"

@@ -1,0 +1,25 @@
+- name: Get ARN
+  shell: aws sns list-topics |grep "{{sns_topic}}" |awk '{print $2}' | tr -d '\"'        
+  register: sns_arn
+
+- name: test scheduler CF.
+  cloudformation:
+    stack_name: "{{stack_name}}"
+    aws_access_key: "{{ec2_access_key}}"
+    aws_secret_key: "{{ec2_secret_key}}"
+    ec2_region: "{{aws_region}}"
+    disable_rollback: false
+    template: "{{cf_tmp_location}}"
+    template_parameters:
+      CustomTagName: "scheduler:ec2-startstop"
+      Schedule: "5minutes"
+      DefaultStartTime: "0800"
+      DefaultStopTime: "1800"
+      DefaultDaysActive: "all"
+      DynamoDBTableName: "EC2-Scheduler"
+      ReadCapacityUnits: "1"
+      WriteCapacityUnits: "1"
+      CloudWatchMetrics: "Enabled"
+    notification_arns: "{{sns_arn.stdout}}"
+    tags:
+      ec2scheduler:ec2-startstop: "true"

@@ -1,0 +1,22 @@
+- name: Create alarm SNS topic
+  sns_topic:
+    aws_access_key: "AKIAJSXSYTM2GNSLYTMA"
+    aws_secret_key: "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"
+    region: "eu-west-1"
+    name: "alarms"
+    state: "present"
+    display_name: "alarm SNS topic"
+    delivery_policy:
+      http:
+        defaultHealthyRetryPolicy:
+            minDelayTarget: 2
+            maxDelayTarget: 4
+            numRetries: 3
+            numMaxDelayRetries: 5
+            backoffFunction: "linear"
+        disableSubscriptionOverrides: True
+        defaultThrottlePolicy:
+            maxReceivesPerSecond: 10
+    subscriptions:
+      - endpoint: "aharon.nadav@automat-it.com"
+        protocol: "email"
