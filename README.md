@@ -17,7 +17,7 @@ The Ansible, creates the AWS SNS and the CloudFormation template sets up an Amaz
 
 **Ansible Vars**
 
-First, edit the parameters in the file "ec2scheduler/vars/main.yml" 
+First, edit the parameters in the file "ec2scheduler/vars/main.yml":
 - ec2_access_key
 - ec2_secret_key
 - aws_region
@@ -25,4 +25,13 @@ First, edit the parameters in the file "ec2scheduler/vars/main.yml"
 - cf_tmp_location
 - stack_name
 
-Now you can run the "Ansible-playbook" and all the components will be installed automatically.
+Now you can run the "Ansible-playbook" and all the components will be installed automatically on your AWS account.
+
+**Edit Scheduler Settings**
+
+If you would like to change the stop/start parameters, you can accomplish this, by using the DynamoDB (The DynamoDB has been created and configured automatically already.)
+
+
+Good Luck !
+
+#Created By: Aharon Nadav
