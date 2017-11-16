@@ -1,3 +1,1 @@
-# ansible
-
-![](Scheduler.png){:height="20%" width="20%"}
+![](Scheduler.png "Ansible-ec2 Scheduler")
