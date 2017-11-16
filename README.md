@@ -1,3 +1,2 @@
-Ansible Scheduler
-
+Ansible
 ![Ansible-ec2 Scheduler](Scheduler.png)
