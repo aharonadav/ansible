@@ -1,38 +1,37 @@
-Role Name
-=========
+*Ansible-Lambda-SNS-CF*
+-
+EC2 Scheduler
+-
+ **Introduction**
 
-A brief description of the role goes here.
+The EC2 Scheduler leverages Amazon EC2 resource tags and AWS Lambda to automatically stop and restart Amazon EC2 instances
 
-Requirements
-------------
+**Architecture Overview**
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Automatic deployment of this solution configures the following components and functionality.
+![Ansible-ec2 Scheduler](Scheduler.png)
 
-Role Variables
---------------
+ **Design**
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The Ansible, creates the AWS SNS and the CloudFormation template sets up an Amazon CloudWatch event at a customer- defined interval. This event invokes the EC2 Scheduler AWS Lambda function. During configuration, the user defines default start and stop parameters (in UTC) as well as a custom tag that the EC2 Scheduler will use to identify applicable Amazon EC2 instances. These values are stored in Amazon DynamoDB, and the Lambda function retrieves them each time it runs. The customer then applies the custom tag to applicable Amazon EC2 instances.
 
-Dependencies
-------------
+**Ansible Vars**
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+First, edit the parameters in the file "ec2scheduler/vars/main.yml":
+- ec2_access_key
+- ec2_secret_key
+- aws_region
+- sns_topic
+- cf_tmp_location
+- stack_name
 
-Example Playbook
-----------------
+Now you can run the "Ansible-playbook" and all the components will be installed automatically on your AWS account.
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+**Edit Scheduler Settings**
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+If you would like to change the stop/start parameters, you can accomplish this, by using the DynamoDB (The DynamoDB has been created and configured automatically already.)
 
-License
--------
 
-BSD
+Good Luck !
 
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+#Created By: Aharon Nadav
