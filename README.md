@@ -1,3 +1,3 @@
 # ansible
 
-[Alt text](Scheduler.png)
+![Alt text](Scheduler.png?raw=true)
