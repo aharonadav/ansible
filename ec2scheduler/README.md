@@ -35,6 +35,7 @@ Now you can run the "Ansible-playbook" and all the components will be installed 
 If you would like to change the stop/start parameters, you can accomplish this, by using the DynamoDB (The DynamoDB has been created and configured automatically already.)
 
 
-Good Luck !
+***Good Luck !***
 
-#Created By: Aharon Nadav
+
+***Created By: Aharon Nadav***
