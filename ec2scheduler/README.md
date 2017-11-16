@@ -20,7 +20,6 @@ The Ansible, creates the AWS SNS and the CloudFormation template sets up an Amaz
 ***Important:***
  Make sure you have Ansible and AWS-CLI installed, before you are running the Playbook.
 
-
 Edit the parameters in the file "ec2scheduler/vars/main.yml":
 - ec2_access_key
 - ec2_secret_key
