@@ -1,3 +1,3 @@
 # ansible
 
-![Alt text](Scheduler.png width="10" height="10")
+![](Scheduler.png =250x250)
